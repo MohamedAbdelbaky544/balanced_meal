@@ -1,4 +1,6 @@
 import 'package:balanced_meal/balace/domain/entities/food_items.dart';
+import 'package:balanced_meal/balace/domain/entities/order_data.dart';
+import 'package:balanced_meal/balace/presentation/controller/card_controller.dart';
 import 'package:balanced_meal/balace/presentation/cubits/get_vegetable_cubit.dart';
 import 'package:balanced_meal/balace/presentation/widgets/food_container_widget.dart';
 import 'package:balanced_meal/core/presentation/cubits/base_state.dart';
@@ -12,7 +14,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VegetablesWidget extends StatefulWidget {
-  const VegetablesWidget({super.key});
+  const VegetablesWidget({super.key, required this.cardController});
+  final CardController cardController;
 
   @override
   State<VegetablesWidget> createState() => _VegetablesWidgetState();
@@ -65,17 +68,31 @@ class _VegetablesWidgetState extends State<VegetablesWidget> {
                 );
               } else {
                 return state.item?.length != 0
-                    ? ListView.builder(
-                        padding: const EdgeInsets.only(left: 16),
-                        itemCount: state.item?.length,
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return FoodContainerWidget(
-                            foodItems: state.item![index],
+                    ? ListenableBuilder(
+                        listenable: widget.cardController,
+                        builder: (context, child) {
+                          return ListView.builder(
+                            padding: const EdgeInsets.only(left: 16),
+                            itemCount: state.item?.length,
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return FoodContainerWidget(
+                                foodItems: state.item![index],
+                                onPressed: () {
+                                  widget.cardController.addToCard(
+                                    item: OrderData(
+                                      id: state.item![index].id,
+                                      name: state.item![index].foodName,
+                                      totalPrice: 12,
+                                      quantity: 1,
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                           );
-                        },
-                      )
+                        })
                     : Center(
                         child: Text(
                           context.translation.thereIsNoData,

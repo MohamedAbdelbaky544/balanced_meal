@@ -9,6 +9,7 @@ part of 'order_data_model.dart';
 // **************************************************************************
 
 OrderDataModel _$OrderDataModelFromJson(Map json) => OrderDataModel(
+      id: json['id'] as String,
       name: json['name'] as String,
       totalPrice: (json['total_price'] as num).toDouble(),
       quantity: (json['quantity'] as num).toInt(),
@@ -17,6 +18,7 @@ OrderDataModel _$OrderDataModelFromJson(Map json) => OrderDataModel(
 Map<String, dynamic> _$OrderDataModelToJson(OrderDataModel instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'id': instance.id,
       'total_price': instance.totalPrice,
       'quantity': instance.quantity,
     };

@@ -9,6 +9,7 @@ part of 'food_items_model.dart';
 // **************************************************************************
 
 FoodItemsModel _$FoodItemsModelFromJson(Map json) => FoodItemsModel(
+      id: json['id'] as String,
       foodName: json['food_name'] as String,
       calories: (json['calories'] as num).toInt(),
       imageUrl: json['image_url'] as String,

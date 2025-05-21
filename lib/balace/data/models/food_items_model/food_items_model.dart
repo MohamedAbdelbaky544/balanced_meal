@@ -5,6 +5,7 @@ part 'food_items_model.g.dart';
 
 @JsonSerializable()
 class FoodItemsModel {
+  final String id;
   @JsonKey(name: 'food_name')
   final String foodName;
   final int calories;
@@ -12,6 +13,7 @@ class FoodItemsModel {
   final String imageUrl;
 
   FoodItemsModel({
+    required this.id,
     required this.foodName,
     required this.calories,
     required this.imageUrl,
@@ -23,6 +25,7 @@ class FoodItemsModel {
 
 extension MapToDomain on FoodItemsModel {
   FoodItems toDomain() => FoodItems(
+        id: id,
         foodName: foodName,
         calories: calories,
         imageUrl: imageUrl,

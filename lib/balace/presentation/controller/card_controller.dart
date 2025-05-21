@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 class CardController extends ChangeNotifier {
   Set<OrderData> card = {};
+  double price = 0;
 
   addToCard({
     required OrderData item,
@@ -22,9 +23,18 @@ class CardController extends ChangeNotifier {
     required OrderData item,
   }) {
     if (card.contains(item)) {
+      ChangeNotifier();
       return false;
     } else {
+      ChangeNotifier();
       return true;
     }
+  }
+
+  void getCardPrice() {
+    for (var element in card) {
+      price += element.totalPrice * element.quantity;
+    }
+    ChangeNotifier();
   }
 }

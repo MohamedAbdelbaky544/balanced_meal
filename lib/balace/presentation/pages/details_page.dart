@@ -213,7 +213,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     fontWeight: FontWeight.w400,
                   ),
                   suffixIcon: Padding(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(14),
                     child: Assets.icons.weightIcon.svg(
                       fit: BoxFit.fill,
                     ),
@@ -259,7 +259,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     fontWeight: FontWeight.w400,
                   ),
                   suffixIcon: Padding(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(16),
                     child: Assets.icons.cm.svg(
                       fit: BoxFit.fill,
                     ),

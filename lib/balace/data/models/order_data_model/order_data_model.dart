@@ -6,11 +6,14 @@ part 'order_data_model.g.dart';
 @JsonSerializable(createToJson: true)
 class OrderDataModel {
   final String name;
+  final String id;
+
   @JsonKey(name: 'total_price')
   final double totalPrice;
   final int quantity;
 
   OrderDataModel({
+    required this.id,
     required this.name,
     required this.totalPrice,
     required this.quantity,
@@ -24,6 +27,7 @@ class OrderDataModel {
 extension MapToDomain on OrderDataModel {
   OrderData toDomain() => OrderData(
         name: name,
+        id: id,
         totalPrice: totalPrice,
         quantity: quantity,
       );
@@ -32,6 +36,7 @@ extension MapToDomain on OrderDataModel {
 extension MapFromDomain on OrderData {
   OrderDataModel fromDomain() => OrderDataModel(
         name: name,
+        id: id,
         totalPrice: totalPrice,
         quantity: quantity,
       );

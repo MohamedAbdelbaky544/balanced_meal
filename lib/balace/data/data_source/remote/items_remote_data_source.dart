@@ -24,6 +24,6 @@ class ItemsRemoteDataSourceImpl implements ItemsRemoteDataSource {
 
   @override
   Future<QuerySnapshot<Map>> getMeat() {
-    return storage.collection('meat').get();
+    return storage.collection('meat ').get();
   }
 }

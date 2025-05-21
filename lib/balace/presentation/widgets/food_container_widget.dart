@@ -10,9 +10,11 @@ class FoodContainerWidget extends StatelessWidget {
   const FoodContainerWidget({
     super.key,
     required this.foodItems,
+    required this.onPressed,
   });
 
   final FoodItems foodItems;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +108,8 @@ class FoodContainerWidget extends StatelessWidget {
                       ),
                     ),
                     ElevatedButton(
-                        onPressed: () {}, child: Text(context.translation.add))
+                        onPressed: onPressed,
+                        child: Text(context.translation.add))
                   ],
                 ),
               ],
